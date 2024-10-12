@@ -1,0 +1,44 @@
+def add(n1, n2):
+    return n1 + n2
+
+
+def multi(n1, n2):
+    return n1 * n2
+
+
+def sub(n1, n2):
+    return n1 - n2
+
+
+def divide(n1, n2):
+    return n1 / n2
+
+
+operator_dict = {"+": add,
+                 "*": multi,
+                 "-": sub,
+                 "/": divide}
+
+
+def calculator():
+
+    result = 0
+    should_continue = True
+    n1 = int(input("enter your first number:"))
+    while should_continue:
+        for keys in operator_dict:
+            print(keys)
+        operator = input("enter your operator:")
+        n2 = int(input("enter your  next number:"))
+        result = operator_dict[operator](n1, n2)
+        print(f"{n1} {operator} {n2} = {result}")
+        direction = input(f"press y = continue result = {result} or n for new calculation:")
+        if direction == "n":
+            should_continue = False
+            print("\n"*100)
+            calculator()
+        else:
+            n1 = result
+
+
+calculator()
